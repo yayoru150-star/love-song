@@ -16,23 +16,32 @@
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* GREEN GRADIENT - LIGHT TO DARK */
-            background: linear-gradient(135deg, #a8e6cf 0%, #55c7a6 40%, #2d9b7a 70%, #1a7a5a 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            
+            /* ===== BACKGROUND IMAGE + GREEN GRADIENT OVERLAY ===== */
+            background-image: 
+                linear-gradient(rgba(0, 184, 148, 0.7), rgba(26, 122, 90, 0.85)),
+                url('YOUR-BACKGROUND-IMAGE.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
         }
         .card {
-            background: white;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 40px;
             max-width: 500px;
             width: 100%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
             text-align: center;
             transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         .card:hover {
             transform: translateY(-5px);
@@ -120,7 +129,6 @@
             margin-top: 10px;
             font-weight: 500;
         }
-        /* Custom green audio player */
         .audio-player audio::-webkit-media-controls-panel {
             background: linear-gradient(135deg, #a8e6cf, #2d9b7a);
         }
@@ -135,9 +143,7 @@
     <div class="card">
         <h1>🌿 Love Song</h1>
 
-        <!-- ====== PHOTO SECTION ====== -->
         <div class="photo-container">
-            <!-- CHANGE THIS TO YOUR PHOTO FILENAME -->
             <img 
                 src="photo.jpg" 
                 alt="Person's Photo"
@@ -145,16 +151,13 @@
             />
         </div>
 
-        <!-- ====== SONG / AUDIO SECTION ====== -->
         <div class="audio-player">
             <audio controls>
-                <!-- CHANGE THIS TO YOUR SONG FILENAME -->
                 <source src="Adele-Lovesong.mp3" type="audio/mpeg" />
                 Your browser does not support the audio element.
             </audio>
         </div>
 
-        <!-- ====== QR CODE SECTION ====== -->
         <div class="qr-section">
             <h3>📱 Scan to Visit</h3>
             <div id="qrcode"></div>
@@ -171,14 +174,8 @@
     </div>
 
     <script>
-        // ================================================
-        // YOUR WEBSITE URL - UPDATE THIS!
-        // ================================================
         const WEBSITE_URL = 'https://yayoru150-star.github.io/love-song/';
 
-        // ================================================
-        // GENERATE QR CODE
-        // ================================================
         const qrContainer = document.getElementById('qrcode');
         qrContainer.innerHTML = '';
 
@@ -191,9 +188,6 @@
             correctLevel: QRCode.CorrectLevel.H
         });
 
-        // ================================================
-        // UPDATE THE LINK DISPLAY
-        // ================================================
         const linkElement = document.getElementById('pageLink');
         linkElement.href = WEBSITE_URL;
         linkElement.textContent = WEBSITE_URL;
